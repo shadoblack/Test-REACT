@@ -6,6 +6,6 @@ import './styles.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <PrimerComponente />
+    <PrimerComponente titulo="Esta sección es de props" />
   </React.StrictMode>,
 )
