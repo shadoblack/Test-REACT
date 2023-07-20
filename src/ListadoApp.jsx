@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 const Item = ({ nombre, visto }) => {
     return (
-        <li>{nombre}
+        <li className="rojito">{nombre}
             {visto ? '✅' : '❌'}
         </li>
     )
