@@ -1,29 +1,45 @@
 import React from 'react'
+import { useState } from 'react'
 
-const Items = ({nombre, visto}) =>{
-    return(
+const Item = ({ nombre, visto }) => {
+    return (
         <li>{nombre}
-         {visto && '✅' }
-         </li>
+            {visto ? '✅' : '❌'}
+        </li>
     )
 }
 
+
+
+
 export const ListadoApp = () => {
-  return (
-    <>
-    <h1>Listado de cosas hechas</h1>
-    <ol>
 
-        <Items nombre="instalaciones" visto={true}></Items>
-        <Items nombre="uso de Vite" visto={true}></Items>
-        <Items nombre="variables en JSX" visto={true}></Items>
-        <Items nombre="props" visto={true}></Items>
-        <Items nombre="eventos" visto={true}></Items>
-        <Items nombre="UserState" visto={true}></Items>
-        <Items nombre="Redux" visto={false}></Items>
-        <Items nombre="customHooks" visto={false}></Items>
-    </ol>
+    const addTask = () => {
+        setArreglo([...arreglo, {nombre: 'nuevo', visto: false}])
+    }
+    let listadoSecciones = [
+        { nombre: 'Instalaciones necesarias', visto: true },
+        { nombre: "uso de Vite", visto: true },
+        { nombre: "variables en JSX", visto: true },
+        { nombre: "props", visto: true },
+        { nombre: "eventos", visto: true },
+        { nombre: "UserState", visto: true },
+        { nombre: "Redux", visto: false },
+        { nombre: "customHooks", visto: false },
+    ]
+    const [arreglo, setArreglo] = useState(listadoSecciones)
 
-    </>
-  )
+    console.log(arreglo)
+    return (
+        <>
+            <h1>Listado de cosas hechas</h1>
+            <ol>
+            {arreglo.map(item => <Item key={item.nombre} nombre={item.nombre} visto={item.visto}></Item>)}
+            
+            </ol>
+
+            <button onClick={() => addTask()}>Agregare tarea</button>
+
+        </>
+    )
 }
