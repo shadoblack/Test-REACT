@@ -1,9 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
+import { AgregarTarea } from './components/AgregarTarea'
 
 const Item = ({ nombre, visto }) => {
     return (
-        <li className="rojito">{nombre}
+        <li >{nombre}
             {visto ? '✅' : '❌'}
         </li>
     )
@@ -33,12 +34,10 @@ export const ListadoApp = () => {
     return (
         <>
             <h1>Listado de cosas hechas</h1>
+            <AgregarTarea></AgregarTarea>
             <ol>
             {arreglo.map(item => <Item key={item.nombre} nombre={item.nombre} visto={item.visto}></Item>)}
-            
             </ol>
-
-            <button onClick={() => addTask()}>Agregare tarea</button>
 
         </>
     )
